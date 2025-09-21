@@ -813,6 +813,47 @@ uv run agentcore invoke '{"prompt": "小規模なEC2インスタンスでSSH接�
 
 ローカルと同じような結果が得られればOK!
 
+```bash
+Invoking BedrockAgentCore agent 'cost_estimator_agent' via cloud endpoint
+Session ID: 190da895-aa3c-446b-84b8-5aabf56ac203
+
+Response:
+{
+  "ResponseMetadata": {
+    "RequestId": "36708612-c30e-4ccf-b70b-bc3afa0de6d2",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "date": "Sun, 21 Sep 2025 06:18:38 GMT",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "connection": "keep-alive",
+      "x-amzn-requestid": "36708612-c30e-4ccf-b70b-bc3afa0de6d2",
+      "baggage": "Self=1-68cf989c-38f93d0d4107a0c9513c85b4,session.id=190da895-aa3c-446b-84b8-5aabf56ac203",
+      "x-amzn-bedrock-agentcore-runtime-session-id": "190da895-aa3c-446b-84b8-5aabf56ac203",
+      "x-amzn-trace-id": "Root=1-68cf989c-3ad71f7d7041ca331bff9201;Self=1-68cf989c-38f93d0d4107a0c9513c85b4"
+    },
+    "RetryAttempts": 0
+  },
+  "runtimeSessionId": "190da895-aa3c-446b-84b8-5aabf56ac203",
+  "traceId": "Root=1-68cf989c-3ad71f7d7041ca331bff9201;Self=1-68cf989c-38f93d0d4107a0c9513c85b4",
+  "baggage": "Self=1-68cf989c-38f93d0d4107a0c9513c85b4,session.id=190da895-aa3c-446b-84b8-5aabf56ac203",
+  "contentType": "application/json",
+  "statusCode": 200,
+  "response": [
+    "b'\"## AWS Cost Estimate: EC2 t3.micro Instance with Basic Setup\\\\n\\\\n### Architecture Description\\\\n- 1x EC2 t3.micro instance (2 vCPU, 1 GiB memory)\\\\n- 8 GB EBS gp3 storage 
+volume\\\\n- Linux operating system\\\\n- Connection from your PC to the EC2 instance\\\\n\\\\n### Cost Breakdown\\\\n\\\\n| Service | Configuration | Unit Price | Monthly Cost 
+|\\\\n|---------|--------------|------------|--------------|\\\\n| EC2 t3.micro | Linux, On-Demand | $0.0104 per hour | $7.49 |\\\\n| EBS gp3 Storage | 8 GB | $0.08 per GB-month | $0.64 |\\\\n| 
+**Total** | | | **$8.13** |\\\\n\\\\n### Discussion Points\\\\n\\\\n1. **Free Tier Eligibility**:\\\\n   - AWS Free Tier includes 750 hours of t3.micro instances per month for the first 12 
+months\\\\n   - 30 GB of EBS storage is also included in the Free Tier\\\\n   - If you\\'re eligible for the Free Tier, you would likely pay $0 for this setup during the first year\\\\n\\\\n2. 
+**Connection Options**:\\\\n   - SSH connection for Linux instances (no additional cost)\\\\n   - RDP for Windows instances (would cost more for Windows licensing)\\\\n\\\\n'",
+    "b'3. **Cost Optimization**:\\\\n   - Consider reserved instances for longer-term usage (1 or 3-year commitment) for up to 40-60% savings\\\\n   - Use Spot instances for non-critical 
+workloads for up to 90% savings\\\\n   - t3.micro is a burstable instance type - suitable for low to moderate CPU usage with occasional spikes\\\\n\\\\n4. **Additional Costs to Consider**:\\\\n 
+- Data transfer out to the internet (first 1 GB/month is free, then $0.09/GB)\\\\n   - Public IP address (if you use Elastic IP and don\\'t attach it to a running instance)\\\\n   - Snapshot 
+storage for backups (if needed)\\\\n\\\\nThis estimate is based on US East (N. Virginia) region pricing. Costs may vary slightly in other regions.\"'"
+  ]
+}
+```
+
 # Lab 6: Memory - AgentCore Memoryを使用したコスト見積もりエージェント 🧠
 
 ## 1. 学習目標
